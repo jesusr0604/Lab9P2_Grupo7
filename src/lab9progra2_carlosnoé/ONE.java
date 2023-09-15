@@ -483,6 +483,7 @@ public class ONE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 //1/20
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        progressThread3.start();
 
         Object Cero = jTextField1.getText();
         Object Cero1 = jTextField2.getText();
@@ -511,7 +512,8 @@ public class ONE extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jProgressBar2.setBackground(Color.GREEN);
+    jProgressBar2.setBackground(Color.GREEN);
+    progressThread6.start();
         for (int i = 0; i < OGN.size(); i++) {
             jTextArea1.setText(OGN.get(i).toStringOders());
         }
@@ -528,6 +530,7 @@ public class ONE extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jProgressBar2.setBackground(Color.RED);
+        progressThread4.start();
         for (int i = 0; i < OGN.size(); i++) {
             jTextArea1.setText(OGN.get(i).toStringCustomers());
         }
@@ -535,6 +538,7 @@ public class ONE extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jProgressBar2.setBackground(Color.BLUE);
+progressThread5.start();
         for (int i = 0; i < OGN.size(); i++) {
             jTextArea1.setText(OGN.get(i).toStringProducts());
         }
@@ -597,9 +601,8 @@ public class ONE extends javax.swing.JFrame {
             }
         });
     }
-    
-    //6segundos
-    Thread progressThread3 = new Thread(new Runnable() {
+    //4 Segundos
+    Thread progressThread6 = new Thread(new Runnable() {
         @Override
         public void run() {
             jProgressBar2.setMaximum(100);
@@ -610,6 +613,86 @@ public class ONE extends javax.swing.JFrame {
                     public void run() {
 
                         jProgressBar2.setValue(progress);
+                    }
+
+                });
+                try {
+
+//                    int eliminar = jTable1.getSelectedRow();
+//                    OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
+                    Thread.sleep(40);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    });
+    //3segunods
+    Thread progressThread5 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            jProgressBar2.setMaximum(100);
+            jProgressBar2.setMinimum(0);
+            for (int i = 0; i <= 100; i++) {
+                final int progress = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        jProgressBar2.setValue(progress);
+                    }
+
+                });
+                try {
+
+//                    int eliminar = jTable1.getSelectedRow();
+//                    OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
+                    Thread.sleep(30);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    });
+    //6segundos
+    Thread progressThread4 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            jProgressBar2.setMaximum(100);
+            jProgressBar2.setMinimum(0);
+            for (int i = 0; i <= 100; i++) {
+                final int progress = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        jProgressBar2.setValue(progress);
+                    }
+
+                });
+                try {
+
+//                    int eliminar = jTable1.getSelectedRow();
+//                    OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
+                    Thread.sleep(60);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    });
+    Thread progressThread3 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            jProgressBar3.setMaximum(100);
+            jProgressBar3.setMinimum(0);
+            for (int i = 0; i <= 100; i++) {
+                final int progress = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        jProgressBar3.setValue(progress);
                     }
 
                 });
