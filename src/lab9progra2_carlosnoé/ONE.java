@@ -4,17 +4,27 @@
  */
 package lab9progra2_carlosnoé;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cd507
  */
 public class ONE extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ONE
-     */
+    
+    public ArrayList<ClaseAdministrativa> OGN= new ArrayList();
+    private Administrador admin;
+    private Dba database;
+    
+
+    
     public ONE() {
         initComponents();
+        admin= new Administrador("./Lenguajes.txt");
+        database= new Dba("./ExamenII1.accdb");
+        ClaseAdministrativa op= new ClaseAdministrativa();
+        OGN.add(op);
     }
 
     /**
@@ -128,6 +138,11 @@ public class ONE extends javax.swing.JFrame {
         jLabel20.setText("Profit");
 
         jButton1.setText("Agregar Registro");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -412,6 +427,33 @@ public class ONE extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+//1/20
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    Object Cero= jTextField1.getText();
+    Object Cero1= jTextField2.getText();
+    Object Cero3= jTextField3.getText();
+    Object Cero4= jTextField4.getText();
+    Object Cero5= jTextField5.getText();
+    Object Cero6= jTextField6.getText();
+    Object Cero7= jTextField7.getText();
+    Object Cero8= jTextField8.getText();
+    Object Cero9= jTextField9.getText();
+    Object Cero10= jTextField10.getText();
+    Object Cero11= jTextField11.getText();
+    Object Cero12= jTextField12.getText();
+    Object Cero13= jTextField13.getText();
+    Object Cero14= jTextField14.getText();
+    Object Cero15= jTextField15.getText();
+    Object Cero16= jTextField16.getText();
+    Object Cero17= jTextField17.getText();
+    Object Cero18= jTextField18.getText();
+    Object Cero19= jTextField19.getText();
+    Object Cero20= jTextField20.getText();
+    
+    ClaseAdministrativa oneone= new ClaseAdministrativa(Cero, Cero1, Cero3, Cero4, Cero5, Cero6,Cero7,Cero8, Cero9,Cero10, Cero11, Cero12, Cero13, Cero14, Cero15, Cero16, Cero17, Cero18, Cero19, Cero20);        
+    OGN.add(oneone);
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
