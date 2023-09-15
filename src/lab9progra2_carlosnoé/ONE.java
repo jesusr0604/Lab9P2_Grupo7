@@ -5,17 +5,19 @@
 package lab9progra2_carlosnoé;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author cd507
  */
 public class ONE extends javax.swing.JFrame {
-    
+
     public ArrayList<ClaseAdministrativa> OGN = new ArrayList();
     private Administrador admin;
     private Dba database;
-    
+
     public ONE() {
         initComponents();
         admin = new Administrador("./Lenguajes.txt");
@@ -89,6 +91,7 @@ public class ONE extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -391,16 +394,20 @@ public class ONE extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "OrderID", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18", "Title 19", "Title 20"
+                "OrderID", "OrderDate", "ShipDate", "ShipMode", "CustomersID", "CustomersName", "Segment", "Country", "City", "State", "PostalCode", "Region", "ProductID", "Category", "SubCategory", "ProductName", "Sales", "Quantity", "Discount", "Profit"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
 
         jButton8.setText("Update Tabla");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Eliminar registro");
 
@@ -412,19 +419,23 @@ public class ONE extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jInternalFrame3Layout.createSequentialGroup()
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame3Layout.createSequentialGroup()
+                        .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jInternalFrame3Layout.setVerticalGroup(
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
@@ -469,7 +480,7 @@ public class ONE extends javax.swing.JFrame {
         Object Cero18 = jTextField18.getText();
         Object Cero19 = jTextField19.getText();
         Object Cero20 = jTextField20.getText();
-        
+
         ClaseAdministrativa oneone = new ClaseAdministrativa(Cero, Cero1, Cero3, Cero4, Cero5, Cero6, Cero7, Cero8, Cero9, Cero10, Cero11, Cero12, Cero13, Cero14, Cero15, Cero16, Cero17, Cero18, Cero19, Cero20);
         OGN.add(oneone);
 
@@ -479,7 +490,7 @@ public class ONE extends javax.swing.JFrame {
         for (int i = 0; i < OGN.size(); i++) {
             jTextArea1.setText(OGN.get(i).toStringOders());
         }
-        
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -502,8 +513,19 @@ public class ONE extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        jTextArea1.setText(" ");
+        jTextArea1.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        DefaultTableModel modelo = new DefaultTableModel();
+        for (int i = 0; i < OGN.size(); i++) {
+            ClaseAdministrativa ON = (OGN.get(i));
+            Object[] filin1 = {ON.getOrderID(), ON.getOrderDate(), ON.getShipDate(), ON.getShipMode(), ON.getCustomersID(), ON.getSegment(), ON.getCountry(), ON.getCity(), ON.getState(), ON.getPostalCode(), ON.getRegion(), ON.getProductID(), ON.getCategory(), ON.getSubCategory(), ON.getProductName(), ON.getSales(), ON.getQuantity(), ON.getDiscount(), ON.getProfit()
+            };
+            modelo.addRow(filin1);
+        }
+         jTable1.setModel(modelo);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -572,6 +594,7 @@ public class ONE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
