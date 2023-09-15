@@ -260,6 +260,17 @@ public class ClaseAdministrativa {
         data.desconectar();
 
     }
-    
+    public void delete(){
+       Dba data= new Dba("./Base de DATOS.accdb");
+       data.conectar();
+       try {
+           data.query.execute("DELETE from Base de datos where Order ID"+ OrderID);
+           data.commit();
+
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+       data.desconectar();
+   }
     
 }
