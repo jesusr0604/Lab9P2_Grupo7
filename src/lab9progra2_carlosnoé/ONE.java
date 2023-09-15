@@ -391,20 +391,22 @@ public class ONE extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        jButton8.setText("jButton7");
+        jButton8.setText("Update Tabla");
 
-        jButton9.setText("jButton7");
+        jButton9.setText("Eliminar registro");
 
         javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
         jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
