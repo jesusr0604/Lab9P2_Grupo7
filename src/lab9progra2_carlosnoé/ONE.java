@@ -6,6 +6,8 @@ package lab9progra2_carlosnoé;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -14,11 +16,11 @@ import javax.swing.table.TableModel;
  * @author cd507
  */
 public class ONE extends javax.swing.JFrame {
-    
+
     public ArrayList<ClaseAdministrativa> OGN = new ArrayList();
     private Administrador admin;
     private Dba database;
-    
+
     public ONE() {
         initComponents();
         admin = new Administrador("./Lenguajes.txt");
@@ -481,6 +483,7 @@ public class ONE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 //1/20
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         Object Cero = jTextField1.getText();
         Object Cero1 = jTextField2.getText();
         Object Cero3 = jTextField3.getText();
@@ -501,7 +504,7 @@ public class ONE extends javax.swing.JFrame {
         Object Cero18 = jTextField18.getText();
         Object Cero19 = jTextField19.getText();
         Object Cero20 = jTextField20.getText();
-        
+
         ClaseAdministrativa oneone = new ClaseAdministrativa(Cero, Cero1, Cero3, Cero4, Cero5, Cero6, Cero7, Cero8, Cero9, Cero10, Cero11, Cero12, Cero13, Cero14, Cero15, Cero16, Cero17, Cero18, Cero19, Cero20);
         OGN.add(oneone);
 
@@ -512,7 +515,7 @@ public class ONE extends javax.swing.JFrame {
         for (int i = 0; i < OGN.size(); i++) {
             jTextArea1.setText(OGN.get(i).toStringOders());
         }
-        
+
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -525,7 +528,7 @@ public class ONE extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jProgressBar2.setBackground(Color.RED);
-        for (int i = 0; i < OGN.size(); i++) {    
+        for (int i = 0; i < OGN.size(); i++) {
             jTextArea1.setText(OGN.get(i).toStringCustomers());
         }
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -550,9 +553,11 @@ public class ONE extends javax.swing.JFrame {
             modelo.addRow(filin1);
         }
         jTable1.setModel(modelo);
+        progressThread2.start();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        progressThread.start();
         int eliminar = jTable1.getSelectedRow();
         OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
 
@@ -592,6 +597,88 @@ public class ONE extends javax.swing.JFrame {
             }
         });
     }
+    
+    //6segundos
+    Thread progressThread3 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            jProgressBar2.setMaximum(100);
+            jProgressBar2.setMinimum(0);
+            for (int i = 0; i <= 100; i++) {
+                final int progress = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        jProgressBar2.setValue(progress);
+                    }
+
+                });
+                try {
+
+//                    int eliminar = jTable1.getSelectedRow();
+//                    OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
+                    Thread.sleep(60);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    });
+
+    Thread progressThread2 = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            jProgressBar2.setMaximum(100);
+            jProgressBar2.setMinimum(0);
+            for (int i = 0; i <= 100; i++) {
+                final int progress = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        jProgressBar2.setValue(progress);
+                    }
+
+                });
+                try {
+
+//                    int eliminar = jTable1.getSelectedRow();
+//                    OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    });
+
+    Thread progressThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            jProgressBar1.setMaximum(100);
+            jProgressBar1.setMinimum(0);
+            for (int i = 0; i <= 100; i++) {
+                final int progress = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+
+                        jProgressBar1.setValue(progress);
+                    }
+
+                });
+                try {
+
+//                    int eliminar = jTable1.getSelectedRow();
+//                    OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    });
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
