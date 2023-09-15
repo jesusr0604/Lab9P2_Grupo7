@@ -11,19 +11,16 @@ import java.util.ArrayList;
  * @author cd507
  */
 public class ONE extends javax.swing.JFrame {
-
     
-    public ArrayList<ClaseAdministrativa> OGN= new ArrayList();
+    public ArrayList<ClaseAdministrativa> OGN = new ArrayList();
     private Administrador admin;
     private Dba database;
     
-
-    
     public ONE() {
         initComponents();
-        admin= new Administrador("./Lenguajes.txt");
-        database= new Dba("./ExamenII1.accdb");
-        ClaseAdministrativa op= new ClaseAdministrativa();
+        admin = new Administrador("./Lenguajes.txt");
+        database = new Dba("./ExamenII1.accdb");
+        ClaseAdministrativa op = new ClaseAdministrativa();
         OGN.add(op);
     }
 
@@ -311,14 +308,39 @@ public class ONE extends javax.swing.JFrame {
         jInternalFrame2.setVisible(true);
 
         jButton2.setText("Orders");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Details");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Products");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Customers");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Clear");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -403,8 +425,8 @@ public class ONE extends javax.swing.JFrame {
         jInternalFrame3Layout.setVerticalGroup(
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
@@ -429,31 +451,61 @@ public class ONE extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 //1/20
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Object Cero= jTextField1.getText();
-    Object Cero1= jTextField2.getText();
-    Object Cero3= jTextField3.getText();
-    Object Cero4= jTextField4.getText();
-    Object Cero5= jTextField5.getText();
-    Object Cero6= jTextField6.getText();
-    Object Cero7= jTextField7.getText();
-    Object Cero8= jTextField8.getText();
-    Object Cero9= jTextField9.getText();
-    Object Cero10= jTextField10.getText();
-    Object Cero11= jTextField11.getText();
-    Object Cero12= jTextField12.getText();
-    Object Cero13= jTextField13.getText();
-    Object Cero14= jTextField14.getText();
-    Object Cero15= jTextField15.getText();
-    Object Cero16= jTextField16.getText();
-    Object Cero17= jTextField17.getText();
-    Object Cero18= jTextField18.getText();
-    Object Cero19= jTextField19.getText();
-    Object Cero20= jTextField20.getText();
-    
-    ClaseAdministrativa oneone= new ClaseAdministrativa(Cero, Cero1, Cero3, Cero4, Cero5, Cero6,Cero7,Cero8, Cero9,Cero10, Cero11, Cero12, Cero13, Cero14, Cero15, Cero16, Cero17, Cero18, Cero19, Cero20);        
-    OGN.add(oneone);
-    
+        Object Cero = jTextField1.getText();
+        Object Cero1 = jTextField2.getText();
+        Object Cero3 = jTextField3.getText();
+        Object Cero4 = jTextField4.getText();
+        Object Cero5 = jTextField5.getText();
+        Object Cero6 = jTextField6.getText();
+        Object Cero7 = jTextField7.getText();
+        Object Cero8 = jTextField8.getText();
+        Object Cero9 = jTextField9.getText();
+        Object Cero10 = jTextField10.getText();
+        Object Cero11 = jTextField11.getText();
+        Object Cero12 = jTextField12.getText();
+        Object Cero13 = jTextField13.getText();
+        Object Cero14 = jTextField14.getText();
+        Object Cero15 = jTextField15.getText();
+        Object Cero16 = jTextField16.getText();
+        Object Cero17 = jTextField17.getText();
+        Object Cero18 = jTextField18.getText();
+        Object Cero19 = jTextField19.getText();
+        Object Cero20 = jTextField20.getText();
+        
+        ClaseAdministrativa oneone = new ClaseAdministrativa(Cero, Cero1, Cero3, Cero4, Cero5, Cero6, Cero7, Cero8, Cero9, Cero10, Cero11, Cero12, Cero13, Cero14, Cero15, Cero16, Cero17, Cero18, Cero19, Cero20);
+        OGN.add(oneone);
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        for (int i = 0; i < OGN.size(); i++) {
+            jTextArea1.setText(OGN.get(i).toStringOders());
+        }
+        
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        for (int i = 0; i < OGN.size(); i++) {
+            jTextArea1.setText(OGN.get(i).toStringDetails());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        for (int i = 0; i < OGN.size(); i++) {
+            jTextArea1.setText(OGN.get(i).toStringCustomers());
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        for (int i = 0; i < OGN.size(); i++) {
+            jTextArea1.setText(OGN.get(i).toStringProducts());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jTextArea1.setText(" ");
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

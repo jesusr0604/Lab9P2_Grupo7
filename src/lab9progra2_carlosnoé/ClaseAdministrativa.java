@@ -1,6 +1,9 @@
 package lab9progra2_carlosnoé;
 
+import javax.swing.JOptionPane;
+
 public class ClaseAdministrativa {
+
     public Object OrderID;
     public Object OrderDate;
     public Object ShipDate;
@@ -25,7 +28,6 @@ public class ClaseAdministrativa {
     public ClaseAdministrativa() {
     }
 
-    
     public ClaseAdministrativa(Object OrderID, Object OrderDate, Object ShipDate, Object ShipMode, Object CustomersID, Object CustomersName, Object Segment, Object Country, Object City, Object State, Object PostalCode, Object Region, Object ProductID, Object Category, Object SubCategory, Object ProductName, Object Sales, Object Quantity, Object Discount, Object Profit) {
         this.OrderID = OrderID;
         this.OrderDate = OrderDate;
@@ -209,5 +211,53 @@ public class ClaseAdministrativa {
         this.Profit = Profit;
     }
 
-    
+    public String toStringOders() {
+        return "OrderID=" + OrderID + "\n"
+                + "OrderDate= " + OrderDate + "\n"
+                + "ShipDate= " + ShipDate + "\n"
+                + "ShipMode= " + ShipMode + "\n"
+                + "CustomersID= " + CustomersID;
+    }
+
+    public String toStringDetails() {
+        return "OrderID= " + OrderID + "/n"
+                + "ShipMode= " + ShipMode + "/n"
+                + " CustomersID= " + CustomersID + "\n"
+                + " ProductID= " + ProductID + "\n"
+                + " Sales= " + Sales;
+    }
+
+    public String toStringCustomers() {
+        return "CustomersID= " + CustomersID + "\n"
+                + " CustomersName= " + CustomersName + "\n"
+                + " Segment= " + Segment + "\n"
+                + " Country= " + Country + "\n"
+                + "City= " + City + "\n"
+                + " State= " + State + "\n"
+                + " PostalCode= " + PostalCode + "\n"
+                + " Region= " + Region;
+    }
+
+
+    public String toStringProducts() {
+        return "ProductID= " + ProductID + "\n"
+                + "Category= " + Category + "\n"
+                + "SubCategory=" + SubCategory + "\n"
+                + "ProductName=" + ProductName;
+    }
+
+    public void agregar() {
+        Dba data = new Dba("./Base de DATOS.accdb");
+        data.conectar();
+        try {
+            data.query.execute("INSERT INTO Base de DATOS"
+                    + " (Order ID,Order Date,Ship Date,Ship Mode,Customer ID,Customer Name,Segment,Country,City,State,Postal Code,Region,Product ID,Category,Sub-Category,Product Name, Sales, Quantity, Discount, Profit)"
+                    + " VALUES ('" + OrderID + "', '" + OrderDate + "', '" + ShipDate + "', '" + ShipMode + "', '" + CustomersID + "', '" + CustomersName + "', '" + Segment + "', '" + Country + "', '" + City + "', '" + State + "', '" + PostalCode + "', '" + Region + "', '" + ProductID + "', '" + Category + "', '" + SubCategory + "', '" + ProductName + "', '" + Sales + "', '" + Quantity + "', '" + Discount + "', '" + Profit + "')");
+            data.commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Operacion Fallida");
+        }
+        data.desconectar();
+
+    }
 }
