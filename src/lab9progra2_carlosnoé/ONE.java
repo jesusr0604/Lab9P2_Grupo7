@@ -507,6 +507,7 @@ public class ONE extends javax.swing.JFrame {
         Object Cero20 = jTextField20.getText();
 
         ClaseAdministrativa oneone = new ClaseAdministrativa(Cero, Cero1, Cero3, Cero4, Cero5, Cero6, Cero7, Cero8, Cero9, Cero10, Cero11, Cero12, Cero13, Cero14, Cero15, Cero16, Cero17, Cero18, Cero19, Cero20);
+        oneone.agregar();
         OGN.add(oneone);
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -563,6 +564,7 @@ progressThread5.start();
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         progressThread.start();
         int eliminar = jTable1.getSelectedRow();
+        OGN.get(eliminar).delete();
         OGN.remove(eliminar); // si da error en la tabla agregale un mas 1 a  esto para que se borre el seleccionado
 
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -708,7 +710,6 @@ progressThread5.start();
         }
 
     });
-
     Thread progressThread2 = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -735,7 +736,6 @@ progressThread5.start();
         }
 
     });
-
     Thread progressThread = new Thread(new Runnable() {
         @Override
         public void run() {
