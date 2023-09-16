@@ -2,6 +2,12 @@ package lab9progra2_carlosnoé;
 
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ClaseAdministrativa {
 
@@ -25,6 +31,23 @@ public class ClaseAdministrativa {
     public Object Quantity;
     public Object Discount;
     public Object Profit;
+    ArrayList<ClaseAdministrativa> listaAlumnos;
+
+    public ClaseAdministrativa(ArrayList<ClaseAdministrativa> listaAlumnos) {
+        this.listaAlumnos = Listar(listaAlumnos);
+    }
+
+    
+
+    public ArrayList<ClaseAdministrativa> getListaAlumnos() {
+        return listaAlumnos;
+    }
+
+    
+    public void setListaAlumnos(ArrayList<ClaseAdministrativa> listaAlumnos) {
+        this.listaAlumnos = Listar(listaAlumnos);
+    }
+    
 
     public ClaseAdministrativa() {
     }
@@ -265,7 +288,7 @@ public class ClaseAdministrativa {
         Dba db = new Dba("./Base_de_DATOS.mdb");
         db.conectar();
         try {
-            db.query.execute("delete from Base de datos where Order ID="+OrderID);
+            db.query.execute("DELETE from Base de datos where Order ID=" + OrderID);
             db.commit();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -273,4 +296,47 @@ public class ClaseAdministrativa {
         db.desconectar();
     }
 
+    public ArrayList<ClaseAdministrativa> Listar(ArrayList<ClaseAdministrativa> listaAlumnos ) {
+        String jdbcUrl = "jdbc:ucanaccess://Base_de_DATOS.accdb"; // Reemplaza con la ruta correcta de tu base de datos
+
+        // Lista para almacenar los datos
+
+
+        try ( Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String query = "SELECT OrderID, OrderDate, ShipDate, ShipMode, CustomerID, CustomerName, Segment, Country, City, State, PostalCode, Region, ProductID, Category, Sub-Category, ProductName, Sales, Quantity, Discount, Profit FROM base de datos";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Object onee = resultSet.getObject("OrderID");
+                Object onee1 = resultSet.getObject("OrderDate");
+                Object onee2 = resultSet.getObject("ShipDate");
+                Object onee3 = resultSet.getObject("ShipMode");
+                Object onee4 = resultSet.getObject("CustomerID");
+                Object onee5 = resultSet.getObject("CustomerName");
+                Object onee6 = resultSet.getObject("Segment");
+                Object onee7 = resultSet.getObject("Country");
+                Object onee8 = resultSet.getObject("City");
+                Object onee9 = resultSet.getObject("State");
+                Object onee10 = resultSet.getObject("PostalCode");
+                Object onee11 = resultSet.getObject("Region");
+                Object onee12 = resultSet.getObject("ProductID");
+                Object onee13 = resultSet.getObject("Category");
+                Object onee14 = resultSet.getObject("Sub-Category");
+                Object onee15 = resultSet.getObject("ProductName");
+                Object onee16 = resultSet.getObject("Sales");
+                Object onee17 = resultSet.getObject("Quantity");
+                Object onee18 = resultSet.getObject("Discount");
+                Object onee19 = resultSet.getObject("Profit");
+
+                // Crear un objeto Alumno con los datos y agregarlo a la lista
+                ClaseAdministrativa alumno = new ClaseAdministrativa(onee,onee1,onee2,onee3,onee4,onee5,onee6,onee7,onee8,onee9,onee10,onee11,onee12,onee13,onee14,onee15,onee16,onee17,onee18,onee19);
+                listaAlumnos.add(alumno);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+return listaAlumnos;
+
+    }
 }

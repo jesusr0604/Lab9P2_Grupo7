@@ -28,9 +28,14 @@ public class ONE extends javax.swing.JFrame {
         jProgressBar1.setStringPainted(true);
         jProgressBar2.setStringPainted(true);
         jProgressBar3.setStringPainted(true);
-        ClaseAdministrativa op = new ClaseAdministrativa();
-        OGN.add(op);
+        INITT();
 
+    }
+
+    public void INITT() {
+        ArrayList<ClaseAdministrativa> OGN1 = new ArrayList();
+        ClaseAdministrativa op = new ClaseAdministrativa(OGN1);
+        OGN=op.getListaAlumnos();
     }
 
     /**
@@ -558,45 +563,37 @@ public class ONE extends javax.swing.JFrame {
         int opopo = OGN.size();
         Object[][] POP = new Object[opopo][20];
         for (int i = 0; i < OGN.size(); i++) {
-            
-        
-        for (int fila = 0; fila < opopo; fila++) {
-            // Obtén el objeto OGN correspondiente a la fila actual
-            ClaseAdministrativa OGN1 = OGN.get(fila);
 
-            // Copia los valores del objeto en la fila de la matriz
-            POP[fila][0] = OGN1.getOrderID();
-            POP[fila][1] = OGN1.getOrderDate();
-            POP[fila][2] = OGN1.getShipDate();
-            POP[fila][3] = OGN1.getShipMode();
-            POP[fila][4] = OGN1.getCustomersID();
-            POP[fila][5] = OGN1.getSegment();
-            POP[fila][6] = OGN1.getCountry();
-            POP[fila][7] = OGN1.getCity();
-            POP[fila][8] = OGN1.getState();
-            POP[fila][9] = OGN1.getPostalCode();
-            POP[fila][10] = OGN1.getRegion();
-            POP[fila][11] = OGN1.getSegment();
-            POP[fila][12] = OGN1.getProductID();
-            POP[fila][13] = OGN1.getCategory();
-            POP[fila][14] = OGN1.getSubCategory();
-            POP[fila][15] = OGN1.getProductName();
-            POP[fila][16] = OGN1.getSales();
-            POP[fila][17] = OGN1.getQuantity();
-            POP[fila][18] = OGN1.getDiscount();
-            POP[fila][19] = OGN1.getProfit();
-        }
+            for (int fila = 0; fila < opopo; fila++) {
+                // Obtén el objeto OGN correspondiente a la fila actual
+                ClaseAdministrativa OGN1 = OGN.get(fila);
+
+                // Copia los valores del objeto en la fila de la matriz
+                POP[fila][0] = OGN1.getOrderID();
+                POP[fila][1] = OGN1.getOrderDate();
+                POP[fila][2] = OGN1.getShipDate();
+                POP[fila][3] = OGN1.getShipMode();
+                POP[fila][4] = OGN1.getCustomersID();
+                POP[fila][5] = OGN1.getSegment();
+                POP[fila][6] = OGN1.getCountry();
+                POP[fila][7] = OGN1.getCity();
+                POP[fila][8] = OGN1.getState();
+                POP[fila][9] = OGN1.getPostalCode();
+                POP[fila][10] = OGN1.getRegion();
+                POP[fila][11] = OGN1.getSegment();
+                POP[fila][12] = OGN1.getProductID();
+                POP[fila][13] = OGN1.getCategory();
+                POP[fila][14] = OGN1.getSubCategory();
+                POP[fila][15] = OGN1.getProductName();
+                POP[fila][16] = OGN1.getSales();
+                POP[fila][17] = OGN1.getQuantity();
+                POP[fila][18] = OGN1.getDiscount();
+                POP[fila][19] = OGN1.getProfit();
+            }
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(POP, new String[]{
             "OrderID", "OrderDate", "ShipDate", "ShipMode", "CustomersID", "CustomersName", "Segment", "Country", "City", "State", "PostalCode", "Region", "ProductID", "Category", "SubCategory", "ProductName", "Sales", "Quantity", "Discount", "Profit"
         }));
-//        DefaultTableModel modelo = new DefaultTableModel();
-//        for (int i = 0; i < OGN.size(); i++) {
-//            ClaseAdministrativa ON = (OGN.get(i));
-//            Object[] filin1 = {ON.getOrderID(), ON.getOrderDate(), ON.getShipDate(), ON.getShipMode(), ON.getCustomersID(), ON.getSegment(), ON.getCountry(), ON.getCity(), ON.getState(), ON.getPostalCode(), ON.getRegion(), ON.getProductID(), ON.getCategory(), ON.getSubCategory(), ON.getProductName(), ON.getSales(), ON.getQuantity(), ON.getDiscount(), ON.getProfit()
-//            modelo.addRow(filin1);
-//        }
-//        jTable1.setModel(modelo);
         progressThread2.start();
 
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -623,16 +620,24 @@ public class ONE extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ONE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ONE.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ONE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ONE.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ONE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ONE.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ONE.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ONE.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
