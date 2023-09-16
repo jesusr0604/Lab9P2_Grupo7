@@ -247,11 +247,11 @@ public class ClaseAdministrativa {
     }
 
     public void agregar() {
-        Dba data = new Dba("./Base de DATOS.accdb");
+        Dba data = new Dba("./Base_de_DATOS.accdb");
         data.conectar();
         try {
             data.query.execute("INSERT INTO Base de DATOS"
-                    + " (Order ID,Order Date,Ship Date,Ship Mode,Customer ID,Customer Name,Segment,Country,City,State,Postal Code,Region,Product ID,Category,Sub-Category,Product Name, Sales, Quantity, Discount, Profit)"
+                    + " ([Order ID],[Order Date],[Ship Date],[Ship Mode],[Customer ID],[Customer Name],[Segment],[Country],[City],[State],[Postal Code],[Region],[Product ID],[Category],[Sub-Category],[Product Name], [Sales], [Quantity], [Discount], [Profit])"
                     + " VALUES ('" + OrderID + "', '" + OrderDate + "', '" + ShipDate + "', '" + ShipMode + "', '" + CustomersID + "', '" + CustomersName + "', '" + Segment + "', '" + Country + "', '" + City + "', '" + State + "', '" + PostalCode + "', '" + Region + "', '" + ProductID + "', '" + Category + "', '" + SubCategory + "', '" + ProductName + "', '" + Sales + "', '" + Quantity + "', '" + Discount + "', '" + Profit + "')");
             data.commit();
         } catch (Exception e) {

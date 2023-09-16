@@ -18,13 +18,13 @@ import javax.swing.table.TableModel;
 public class ONE extends javax.swing.JFrame {
 
     public ArrayList<ClaseAdministrativa> OGN = new ArrayList();
-    private Administrador admin;
+
     private Dba database;
 
     public ONE() {
         initComponents();
-        admin = new Administrador("./Lenguajes.txt");
-        database = new Dba("./ExamenII1.accdb");
+
+
         ClaseAdministrativa op = new ClaseAdministrativa();
         OGN.add(op);
     }
@@ -763,6 +763,10 @@ progressThread5.start();
 
     });
 
+    public void LLenarArrayList(){
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
