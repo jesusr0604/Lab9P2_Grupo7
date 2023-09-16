@@ -1,6 +1,7 @@
 package lab9progra2_carlosnoé;
 
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 public class ClaseAdministrativa {
 
@@ -238,7 +239,6 @@ public class ClaseAdministrativa {
                 + " Region= " + Region;
     }
 
-
     public String toStringProducts() {
         return "ProductID= " + ProductID + "\n"
                 + "Category= " + Category + "\n"
@@ -260,17 +260,17 @@ public class ClaseAdministrativa {
         data.desconectar();
 
     }
-    public void delete(){
-       Dba data= new Dba("./Base de DATOS.accdb");
-       data.conectar();
-       try {
-           data.query.execute("DELETE from Base de datos where Order ID"+ OrderID);
-           data.commit();
 
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-       data.desconectar();
-   }
-    
+    public void delete() {
+        Dba db = new Dba("./Base_de_DATOS.mdb");
+        db.conectar();
+        try {
+            db.query.execute("delete from Base de datos where Order ID="+OrderID);
+            db.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }
+
 }
