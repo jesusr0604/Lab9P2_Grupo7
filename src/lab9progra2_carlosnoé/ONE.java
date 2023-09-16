@@ -23,6 +23,7 @@ public class ONE extends javax.swing.JFrame {
     private Dba database;
 
     public ONE() {
+        
         initComponents();
 
         jProgressBar1.setStringPainted(true);

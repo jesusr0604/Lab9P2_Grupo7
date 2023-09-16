@@ -297,7 +297,7 @@ public class ClaseAdministrativa {
     }
 
     public ArrayList<ClaseAdministrativa> Listar(ArrayList<ClaseAdministrativa> listaAlumnos ) {
-        String jdbcUrl = "jdbc:ucanaccess://Base_de_DATOS.accdb"; // Reemplaza con la ruta correcta de tu base de datos
+        String jdbcUrl = "jdbc:ucanaccess./Base_de_DATOS.accdb";
 
         // Lista para almacenar los datos
 
